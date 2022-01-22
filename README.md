@@ -11,7 +11,7 @@ A simple list of To Do tasks.
 ### Setup
 
 - Use the green "Code" button at the top of the repo to clone this project using one of the three options:
-   - Open a terminal or a git bash in the desired directory and run `https://github.com/craigs40/BooksES6.git`
+   - Open a terminal or a git bash in the desired directory and run `https://github.com/craigs40/ToDoList.git`
    - Open with Github Desktop
    - Download the ZIP file
 
