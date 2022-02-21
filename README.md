@@ -3,7 +3,7 @@
 # To-Do List
 
 This is a simple HTML list of To Do tasks built using webpack and served by a webpack dev server.
-![toDoList](https://user-images.githubusercontent.com/71286979/155009890-f4c8d507-81be-4304-bd14-9a6f7a23fc87.PNG)
+![toDoList](https://user-images.githubusercontent.com/71286979/155013518-4f7fd78e-124c-4ea5-ab6c-b45680794129.PNG)
 
 ## Built With
 
