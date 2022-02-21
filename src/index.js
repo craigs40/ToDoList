@@ -1,36 +1,36 @@
 const tasks = [
   {
-    description: "First Task",
+    description: 'First Task',
     completed: false,
     index: 0,
   },
   {
-    description: "Second Task",
+    description: 'Second Task',
     completed: false,
     index: 1,
   },
   {
-    description: "Third Task",
+    description: 'Third Task',
     completed: false,
     index: 2,
   },
   {
-    description: "Fourth Task",
+    description: 'Fourth Task',
     completed: false,
     index: 3,
   },
 ];
 
-//Write a function to iterate over the tasks array and populate an HTML list item element for each task.
+// Function to iterate over the tasks array and populate an HTML list item element for each task.
 tasks.forEach((task) => {
-  const toDoList = document.getElementById("toDoList");
-  const listItem = document.createElement("li");
+  const toDoList = document.getElementById('toDoList');
+  const listItem = document.createElement('li');
   listItem.innerHTML = `
-  <input type="checkbox" ${task.completed ? "checked" : ""}>
+  <input type="checkbox" ${task.completed ? 'checked' : ''}>
   <span>${task.description}</span>
   `;
   toDoList.appendChild(listItem);
 });
 
-//Sort tasks by index
+// Sort tasks by index
 tasks.sort((a, b) => a.index - b.index);
