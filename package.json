@@ -22,10 +22,11 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
   },
-    "browserslist": [
+  "browserslist": [
     "defaults",
     "not IE 11"
   ]
