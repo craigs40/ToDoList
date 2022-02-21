@@ -1,0 +1,78 @@
+html,
+body {
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  border: 1px solid #ccc;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 30%;
+  box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
+}
+
+h4 {
+  padding: 10px;
+}
+
+.addToList {
+  width: 90%;
+  padding-left: 8px;
+}
+
+#add {
+  background-color: rgb(255, 254, 254);
+}
+
+#add,
+hr {
+  color: #ccc;
+}
+
+.hr2 {
+  margin-bottom: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+  border-bottom: 1px solid #ccc;
+  padding: 15px;
+}
+
+#clear {
+  color: rgb(177, 175, 175);
+  background-color: rgb(241, 239, 239);
+  width: 100%;
+  font-family: "Inter", sans-serif;
+}
+
+#clear:hover,
+#add:hover {
+  cursor: pointer;
+}
+
+#add,
+.addToList,
+#clear {
+  border: none;
+}
+
+.addToList,
+#clear {
+  height: 50px;
+}

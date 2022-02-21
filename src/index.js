@@ -1,41 +1,36 @@
-//import _ from 'lodash';
-
 const tasks = [
   {
-    description: 'First Task',
+    description: "First Task",
+    completed: false,
+    index: 0,
+  },
+  {
+    description: "Second Task",
     completed: false,
     index: 1,
   },
   {
-    description: 'Second Task',
+    description: "Third Task",
     completed: false,
     index: 2,
   },
   {
-    description: 'Third Task',
+    description: "Fourth Task",
     completed: false,
     index: 3,
-  },
-  {
-    description: 'Fourth Task',
-    completed: false,
-    index: 4,
   },
 ];
 
 //Write a function to iterate over the tasks array and populate an HTML list item element for each task.
+tasks.forEach((task) => {
+  const toDoList = document.getElementById("toDoList");
+  const listItem = document.createElement("li");
+  listItem.innerHTML = `
+  <input type="checkbox" ${task.completed ? "checked" : ""}>
+  <span>${task.description}</span>
+  `;
+  toDoList.appendChild(listItem);
+});
 
-const displayTasks = () => {
-  tasks.forEach((task) => {
-    const html = `
-      <li class="task-${task.index}">
-        <div class="task">
-          <input type="checkbox" name="task"> ${task.description}
-        </div>
-        <i class="fas fa-ellipsis-v three-dot-icon"></i>
-      </li>
-      `;
-    inputItem.insertAdjacentHTML('afterend', html);
-  });
-};
-displayTasks();
+//Sort tasks by index
+tasks.sort((a, b) => a.index - b.index);
