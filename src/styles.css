@@ -1,3 +1,5 @@
+/* stylelint-disable declaration-colon-newline-after, length-zero-no-unit, value-list-comma-newline-after */
+
 html,
 body {
   width: 100%;
@@ -100,3 +102,5 @@ li {
 #add:hover {
   cursor: pointer;
 }
+
+/* stylelint-enable declaration-colon-newline-after, length-zero-no-unit, value-list-comma-newline-after */
