@@ -23,9 +23,10 @@ main {
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  width: 30%;
+  width: 60%;
   box-shadow: 13px 13px 20px #a9abad, -13px -13px 20px #fff;
   background-color: #fff;
+  margin: 0 auto;
 }
 
 .listHead {
