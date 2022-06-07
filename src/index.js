@@ -34,3 +34,6 @@ tasks.forEach((task) => {
 
 // Sort tasks by index
 tasks.sort((a, b) => a.index - b.index);
+
+// Local Storage
+localStorage.setItem('tasks', JSON.stringify(tasks));
