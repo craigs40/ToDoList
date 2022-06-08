@@ -52,7 +52,14 @@ h4 {
   margin-bottom: 0;
 }
 
-.addToList {
+.task-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.task-container,
+#task-input {
   width: 90%;
   padding-left: 8px;
 }
@@ -61,7 +68,6 @@ h4 {
   background-color: rgb(255, 254, 254);
 }
 
-#add,
 hr {
   color: #ccc;
 }
@@ -89,12 +95,11 @@ li {
 }
 
 #add,
-.addToList,
+#task-input,
 #clear {
   border: none;
 }
 
-.addToList,
 #clear {
   height: 50px;
 }

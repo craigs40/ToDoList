@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/48d3e4e4c2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="styles.css">
   <title>To-do List</title>
 </head>
@@ -19,12 +20,12 @@
       <h4>Today's To-do</h4>
     </div>
     <hr>
-    <div id="input">
-      <input class="addToList" type="text" placeholder="Add to your List...">
-      <button id="add">+</button>
-    </div>
+   <div class="task-container">
+    <input type="text" placeholder="Add to your List..." id="task-input">
+    <button id="add">Add</button>
+   </div>
     <hr class="hr2">
-    <ul id="toDoList">
+    <ul class="draggable-list" id="toDoList">
     </ul>
     <button id="clear">Clear all Completed</button>
   </main>
