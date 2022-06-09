@@ -4,16 +4,16 @@ let clear = document.getElementById('clear');
 let taskInput = document.getElementById('task-input');
 
 let tasksList = [];
-let tasks = {
-  description: taskInput.value,
-  completed: false,
-  index: tasksList.length,
-};
 
 createTask = () => {
   if (taskInput.value === '') {
     alert('Please enter a task');
   } else {
+    let tasks = {
+      description: taskInput.value,
+      completed: false,
+      index: tasksList.length,
+    };
     let listItem = document.createElement('li');
 
     listItem.innerHTML = `
@@ -22,12 +22,16 @@ createTask = () => {
     <i id="delete" class="fas fa-trash-alt delete"></i>
     `;
     toDoList.appendChild(listItem);
+
+    tasksList.push(tasks);
+    localStorage.setItem('tasks', JSON.stringify(tasksList));
   }
   taskInput.value = '';
 };
 
 deleteTask = (removeElement) => {
   removeElement.parentElement.remove();
+  localStorage.setItem('tasks', JSON.stringify(tasksList));
 };
 
 toggleComplete = (inputElement) => {
@@ -36,6 +40,7 @@ toggleComplete = (inputElement) => {
   } else {
     inputElement.parentElement.classList.add('complete');
     tasks.completed = true;
+    localStorage.setItem('tasks', JSON.stringify(tasksList));
   }
 };
 
@@ -43,6 +48,7 @@ clearComplete = () => {
   let completeTasks = document.querySelectorAll('.complete');
   completeTasks.forEach((task) => {
     task.remove();
+    localStorage.setItem('tasks', JSON.stringify(tasksList));
   });
 };
 
@@ -58,6 +64,7 @@ toDoList.addEventListener('click', (e) => {
   switch (e.target.tagName) {
     case 'I':
       deleteTask(e.target);
+      localStorage.setItem('tasks', JSON.stringify(tasksList));
       break;
   }
 });
