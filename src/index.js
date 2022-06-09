@@ -1,14 +1,14 @@
 let toDoList = document.getElementById('toDoList');
 let addBtn = document.getElementById('add');
-let trash = document.getElementById('delete');
+let clear = document.getElementById('clear');
 let taskInput = document.getElementById('task-input');
-/*let tasks = [
-  {
-    description: taskInput.value,
-    completed: false,
-    index: tasks.length,
-  },
-];*/
+
+let tasksList = [];
+let tasks = {
+  description: taskInput.value,
+  completed: false,
+  index: tasksList.length,
+};
 
 createTask = () => {
   if (taskInput.value === '') {
@@ -22,20 +22,29 @@ createTask = () => {
     <i id="delete" class="fas fa-trash-alt delete"></i>
     `;
     toDoList.appendChild(listItem);
-
-    // Sort tasks by index
-    //task.sort((a, b) => a.index - b.index);
-
-    taskInput.value = '';
   }
+  taskInput.value = '';
 };
 
 deleteTask = (removeElement) => {
   removeElement.parentElement.remove();
 };
 
-// Local Storage
-//localStorage.setItem('tasks', JSON.stringify(tasks));
+toggleComplete = (inputElement) => {
+  if (inputElement.checked === false) {
+    inputElement.parentElement.classList.remove('complete');
+  } else {
+    inputElement.parentElement.classList.add('complete');
+    tasks.completed = true;
+  }
+};
+
+clearComplete = () => {
+  let completeTasks = document.querySelectorAll('.complete');
+  completeTasks.forEach((task) => {
+    task.remove();
+  });
+};
 
 addBtn.addEventListener('click', createTask);
 
@@ -55,6 +64,8 @@ toDoList.addEventListener('click', (e) => {
 
 toDoList.addEventListener('change', (e) => {
   if (e.target.tagName === 'INPUT' && e.target.type === 'checkbox') {
-    toggleComplete();
+    toggleComplete(e.target);
   }
 });
+
+clear.addEventListener('click', clearComplete);
