@@ -9,6 +9,7 @@ module.exports = {
   },
   plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
   output: {
+    // eslint-disable-next-line no-undef
     path: path.resolve(__dirname, './dist'),
     filename: './main.js',
     publicPath: '',

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const toDoList = document.getElementById('toDoList');
 const addBtn = document.getElementById('add');
 const clear = document.getElementById('clear');
