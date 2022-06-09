@@ -52,16 +52,23 @@ h4 {
   margin-bottom: 0;
 }
 
-.addToList {
-  width: 90%;
-  padding-left: 8px;
+.task-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#task-input {
+  width: 70%;
+  padding: 8px;
 }
 
 #add {
   background-color: rgb(255, 254, 254);
 }
 
-#add,
 hr {
   color: #ccc;
 }
@@ -76,9 +83,29 @@ ul {
 }
 
 li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   list-style: none;
   border-bottom: 1px solid #ccc;
   padding: 15px;
+  height: 20px;
+}
+
+p,
+.checkbox {
+  margin-left: 30px;
+}
+
+.complete {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+#delete {
+  margin-left: auto;
+  margin-right: 35px;
+  cursor: pointer;
 }
 
 #clear {
@@ -86,17 +113,13 @@ li {
   background-color: rgb(241, 239, 239);
   width: 100%;
   font-family: 'Inter', sans-serif;
+  height: 50px;
 }
 
 #add,
-.addToList,
+#task-input,
 #clear {
   border: none;
-}
-
-.addToList,
-#clear {
-  height: 50px;
 }
 
 #clear:hover,
