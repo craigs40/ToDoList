@@ -93,7 +93,7 @@ li {
 }
 
 p,
-.checkbox{
+.checkbox {
   margin-left: 30px;
 }
 
@@ -113,16 +113,13 @@ p,
   background-color: rgb(241, 239, 239);
   width: 100%;
   font-family: 'Inter', sans-serif;
+  height: 50px;
 }
 
 #add,
 #task-input,
 #clear {
   border: none;
-}
-
-#clear {
-  height: 50px;
 }
 
 #clear:hover,

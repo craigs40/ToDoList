@@ -1,20 +1,20 @@
-let toDoList = document.getElementById('toDoList');
-let addBtn = document.getElementById('add');
-let clear = document.getElementById('clear');
-let taskInput = document.getElementById('task-input');
+const toDoList = document.getElementById('toDoList');
+const addBtn = document.getElementById('add');
+const clear = document.getElementById('clear');
+const taskInput = document.getElementById('task-input');
 
-let tasksList = [];
+const tasksList = [];
 
 createTask = () => {
   if (taskInput.value === '') {
     alert('Please enter a task');
   } else {
-    let tasks = {
+    const tasks = {
       description: taskInput.value,
       completed: false,
       index: tasksList.length,
     };
-    let listItem = document.createElement('li');
+    const listItem = document.createElement('li');
 
     listItem.innerHTML = `
     <input type="checkbox" class="checkbox">
@@ -45,7 +45,7 @@ toggleComplete = (inputElement) => {
 };
 
 clearComplete = () => {
-  let completeTasks = document.querySelectorAll('.complete');
+  const completeTasks = document.querySelectorAll('.complete');
   completeTasks.forEach((task) => {
     task.remove();
     localStorage.setItem('tasks', JSON.stringify(tasksList));
