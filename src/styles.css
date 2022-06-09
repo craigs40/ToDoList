@@ -55,13 +55,14 @@ h4 {
 .task-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.task-container,
 #task-input {
-  width: 90%;
-  padding-left: 8px;
+  width: 70%;
+  padding: 8px;
 }
 
 #add {
@@ -82,9 +83,24 @@ ul {
 }
 
 li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   list-style: none;
   border-bottom: 1px solid #ccc;
   padding: 15px;
+  height: 20px;
+}
+
+p,
+.checkbox{
+  margin-left: 30px;
+}
+
+#delete {
+  margin-left: auto;
+  margin-right: 35px;
+  cursor: pointer;
 }
 
 #clear {

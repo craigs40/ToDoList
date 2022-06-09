@@ -1,65 +1,60 @@
-/*
-const tasks = [
-  {
-    description: 'First Task',
-    completed: false,
-    index: 0,
-  },
-];
-
-// Function to iterate over the tasks array and populate an HTML list item element for each task.
-tasks.forEach((task) => {
-  const toDoList = document.getElementById('toDoList');
-  const listItem = document.createElement('li');
-  listItem.innerHTML = `
-  <input type="checkbox" ${task.completed ? 'checked' : ''}>
-  <span>${task.description}</span>
-  `;
-  //toDoList.appendChild(listItem);
-  // Sort tasks by index
-  tasks.sort((a, b) => a.index - b.index);
-
-  // Local Storage
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-});
-*/
-
 let toDoList = document.getElementById('toDoList');
 let addBtn = document.getElementById('add');
+let trash = document.getElementById('delete');
 let taskInput = document.getElementById('task-input');
+/*let tasks = [
+  {
+    description: taskInput.value,
+    completed: false,
+    index: tasks.length,
+  },
+];*/
 
 createTask = () => {
-  let task = taskInput.value;
-  if (task === '') {
+  if (taskInput.value === '') {
     alert('Please enter a task');
   } else {
     let listItem = document.createElement('li');
 
-    let checkbox = document.createElement('input');
-    checkbox.classList.add('checkbox');
-    checkbox.type = 'checkbox';
-
-    let paragraph = document.createElement('p');
-    paragraph.classList.add('paragraph');
-    paragraph.textContent = task;
-
-    let deleteBtn = document.createElement('span');
-    deleteBtn.classList.add('delete');
-    deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
-
-    listItem.appendChild(checkbox);
-    listItem.appendChild(paragraph);
-    listItem.appendChild(deleteBtn);
+    listItem.innerHTML = `
+    <input type="checkbox" class="checkbox">
+    <p class="paragraph">${taskInput.value}</p>
+    <i id="delete" class="fas fa-trash-alt delete"></i>
+    `;
     toDoList.appendChild(listItem);
+
+    // Sort tasks by index
+    //task.sort((a, b) => a.index - b.index);
 
     taskInput.value = '';
   }
 };
+
+deleteTask = (removeElement) => {
+  removeElement.parentElement.remove();
+};
+
+// Local Storage
+//localStorage.setItem('tasks', JSON.stringify(tasks));
 
 addBtn.addEventListener('click', createTask);
 
 taskInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     createTask();
+  }
+});
+
+toDoList.addEventListener('click', (e) => {
+  switch (e.target.tagName) {
+    case 'I':
+      deleteTask(e.target);
+      break;
+  }
+});
+
+toDoList.addEventListener('change', (e) => {
+  if (e.target.tagName === 'INPUT' && e.target.type === 'checkbox') {
+    toggleComplete();
   }
 });
