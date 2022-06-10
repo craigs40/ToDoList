@@ -80,28 +80,48 @@ toDoList.addEventListener('change', (e) => {
 
 clear.addEventListener('click', clearComplete);
 
-const draggables = document.querySelectorAll('.draggable');
-const containers = document.querySelectorAll('.container');
+const list_items = document.querySelectorAll('.draggable');
+const lists = document.querySelectorAll('.container');
 
-draggables.forEach((draggable) => {
-  draggable.addEventListener('dragstart', () => {
-    draggable.classList.add('dragging');
+let draggedItem = null;
+
+for (let i = 0; i < list_items.length; i++) {
+  const item = list_items[i];
+
+  item.addEventListener('dragstart', function () {
+    draggedItem = item;
+    setTimeout(function () {
+      item.style.display = 'none';
+    }, 0);
   });
 
-  draggable.addEventListener('dragend', () => {
-    draggable.classList.remove('dragging');
+  item.addEventListener('dragend', function () {
+    setTimeout(function () {
+      draggedItem.style.display = 'block';
+      draggedItem = null;
+    }, 0);
   });
-});
 
-containers.forEach((container) => {
-  container.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    const afterElement = getDragAfterElement(container, e.clientY);
-    const draggable = document.querySelector('.dragging');
-    if (afterElement == null) {
-      container.appendChild(draggable);
-    } else {
-      container.insertBefore(draggable, afterElement);
-    }
-  });
-});
+  for (let j = 0; j < lists.length; j++) {
+    const list = lists[j];
+
+    list.addEventListener('dragover', function (e) {
+      e.preventDefault();
+    });
+
+    list.addEventListener('dragenter', function (e) {
+      e.preventDefault();
+      this.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+    });
+
+    list.addEventListener('dragleave', function () {
+      this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+    });
+
+    list.addEventListener('drop', function () {
+      console.log('drop');
+      this.append(draggedItem);
+      this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+    });
+  }
+}
