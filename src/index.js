@@ -45,6 +45,11 @@ deleteTask = (removeElement) => {
 };
 
 toggleComplete = (inputElement) => {
+  let tasks = {
+    description: taskInput.value,
+    completed: false,
+    index: tasksList.length,
+  };
   if (inputElement.checked === false) {
     inputElement.parentElement.classList.remove('complete');
   } else {
@@ -56,6 +61,11 @@ toggleComplete = (inputElement) => {
 
 clearComplete = () => {
   const completeTasks = document.querySelectorAll('.complete');
+  //filter out completed tasks
+  tasksList.filter((task) => {
+    return !task.completed;
+  });
+
   completeTasks.forEach((task) => {
     task.remove();
     //remove from array
