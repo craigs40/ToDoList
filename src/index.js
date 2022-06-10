@@ -34,6 +34,13 @@ createTask = () => {
 
 deleteTask = (removeElement) => {
   removeElement.parentElement.remove();
+  //remove from array
+  tasksList.splice(removeElement.parentElement.dataset.index, 1);
+  localStorage.setItem('tasks', JSON.stringify(tasksList));
+  //update index
+  tasksList.forEach((task, index) => {
+    task.index = index;
+  });
   localStorage.setItem('tasks', JSON.stringify(tasksList));
 };
 
@@ -51,7 +58,13 @@ clearComplete = () => {
   const completeTasks = document.querySelectorAll('.complete');
   completeTasks.forEach((task) => {
     task.remove();
+    //remove from array
+    tasksList.splice(task.dataset.index, 1);
     localStorage.setItem('tasks', JSON.stringify(tasksList));
+    //update index
+    tasksList.forEach((task, index) => {
+      task.index = index.length;
+    });
   });
 };
 
