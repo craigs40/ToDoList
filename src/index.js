@@ -22,6 +22,8 @@ createTask = () => {
     <p class="paragraph">${taskInput.value}</p>
     <i id="delete" class="fas fa-trash-alt delete"></i>
     `;
+    listItem.setAttribute('draggable', true);
+    listItem.classList.add('draggable');
     toDoList.appendChild(listItem);
 
     tasksList.push(tasks);
@@ -32,10 +34,22 @@ createTask = () => {
 
 deleteTask = (removeElement) => {
   removeElement.parentElement.remove();
+  //remove from array
+  tasksList.splice(removeElement.parentElement.dataset.index, 1);
+  localStorage.setItem('tasks', JSON.stringify(tasksList));
+  //update index
+  tasksList.forEach((task, index) => {
+    task.index = index;
+  });
   localStorage.setItem('tasks', JSON.stringify(tasksList));
 };
 
 toggleComplete = (inputElement) => {
+  let tasks = {
+    description: taskInput.value,
+    completed: false,
+    index: tasksList.length,
+  };
   if (inputElement.checked === false) {
     inputElement.parentElement.classList.remove('complete');
   } else {
@@ -47,9 +61,20 @@ toggleComplete = (inputElement) => {
 
 clearComplete = () => {
   const completeTasks = document.querySelectorAll('.complete');
+  //filter out completed tasks
+  tasksList.filter((task) => {
+    return !task.completed;
+  });
+
   completeTasks.forEach((task) => {
     task.remove();
+    //remove from array
+    tasksList.splice(task.dataset.index, 1);
     localStorage.setItem('tasks', JSON.stringify(tasksList));
+    //update index
+    tasksList.forEach((task, index) => {
+      task.index = index.length;
+    });
   });
 };
 
@@ -77,3 +102,49 @@ toDoList.addEventListener('change', (e) => {
 });
 
 clear.addEventListener('click', clearComplete);
+
+const list_items = document.querySelectorAll('.draggable');
+const lists = document.querySelectorAll('.container');
+
+let draggedItem = null;
+
+for (let i = 0; i < list_items.length; i++) {
+  const item = list_items[i];
+
+  item.addEventListener('dragstart', function () {
+    draggedItem = item;
+    setTimeout(function () {
+      item.style.display = 'none';
+    }, 0);
+  });
+
+  item.addEventListener('dragend', function () {
+    setTimeout(function () {
+      draggedItem.style.display = 'block';
+      draggedItem = null;
+    }, 0);
+  });
+
+  for (let j = 0; j < lists.length; j++) {
+    const list = lists[j];
+
+    list.addEventListener('dragover', function (e) {
+      e.preventDefault();
+    });
+
+    list.addEventListener('dragenter', function (e) {
+      e.preventDefault();
+      this.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+    });
+
+    list.addEventListener('dragleave', function () {
+      this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+    });
+
+    list.addEventListener('drop', function () {
+      console.log('drop');
+      this.append(draggedItem);
+      this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+    });
+  }
+}
