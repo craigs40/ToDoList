@@ -22,6 +22,8 @@ createTask = () => {
     <p class="paragraph">${taskInput.value}</p>
     <i id="delete" class="fas fa-trash-alt delete"></i>
     `;
+    listItem.setAttribute('draggable', true);
+    listItem.classList.add('draggable');
     toDoList.appendChild(listItem);
 
     tasksList.push(tasks);
@@ -77,3 +79,29 @@ toDoList.addEventListener('change', (e) => {
 });
 
 clear.addEventListener('click', clearComplete);
+
+const draggables = document.querySelectorAll('.draggable');
+const containers = document.querySelectorAll('.container');
+
+draggables.forEach((draggable) => {
+  draggable.addEventListener('dragstart', () => {
+    draggable.classList.add('dragging');
+  });
+
+  draggable.addEventListener('dragend', () => {
+    draggable.classList.remove('dragging');
+  });
+});
+
+containers.forEach((container) => {
+  container.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    const afterElement = getDragAfterElement(container, e.clientY);
+    const draggable = document.querySelector('.dragging');
+    if (afterElement == null) {
+      container.appendChild(draggable);
+    } else {
+      container.insertBefore(draggable, afterElement);
+    }
+  });
+});
